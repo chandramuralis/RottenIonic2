@@ -1,1 +1,5 @@
 /* Your application styles go here */
+
+.movieDetail-score {
+  font-size: 0.8em !important;
+}

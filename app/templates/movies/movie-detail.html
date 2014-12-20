@@ -1,9 +1,77 @@
 <ion-view title="Movie Detail">
 
   <ion-content>
-    <div class="bar bar-header item-input-inset">
-      
-    </div>
+    <div class="list card">
+      <div class="item item-thumbnail-left">
+        <img ng-src="{{movie.posters.thumbnail}}">
+        <h2>{{movie.title}}</h2>
+        <p>Released: {{movie.release_dates.theater | date: 'shortDate'}}</p>
+        <p class="movieDetail-score">
+          <span style="float:left">
+          Critics: {{movie.ratings.critics_score}}%
+            <i class="ion-thumbsup" ng-show="movie.ratings.critics_rating =='Certified Fresh'"> </i>
+            <i class="ion-thumbsdown" ng-show="movie.ratings.critics_rating !='Certified Fresh'"> </i>,
+          </span>
+          <span style="float:right">
+          Audience: {{movie.ratings.audience_score}}%
+            <i class="ion-thumbsup" ng-show="movie.ratings.audience_rating =='Upright'"> </i>
+            <i class="ion-thumbsdown" ng-show="movie.ratings.audience_rating !='Upright'"> </i>
+          </span>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="item item-divider">
+          Add your rating
+        </div>
+        <button class="button button-outline button-calm button-small">
+          Want to See
+        </button>
+        <button class="button button-outline button-assertive button-small">
+          Not Interested
+        </button>
+        <rating ng-model="rate" max="max"></rating>
+      </div>
+
+      <div class="card">
+        <div class="item item-divider">
+          Synopsis
+        </div>
+
+        <div class="item item-body">
+          <p>
+            {{movie.synopsis}}
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+          <div class="item item-divider">
+            Cast
+          </div>
+
+          <div class="list">
+
+            <a ng-repeat="cast in movie.abridged_cast" class="item">
+              <p>{{ cast.name }}</p>
+            </a>
+          </div>
+        <div class="card">
+
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-thumbsup"></i> Like
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-chatbox"></i> Comment
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share"></i> Share
+            </a>
+          </div>
+
+        </div>
 
   </ion-content>
 </ion-view>
