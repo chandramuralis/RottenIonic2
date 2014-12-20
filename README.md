@@ -17,8 +17,6 @@ Environment Setup
   'npm install'
   'bower install'
 
-2.
-
 Start the server in different port number
 ==========================================
 ionic serve 5001 5002     //5001 is for webapp and 5002 is for Live-Reload
@@ -29,7 +27,7 @@ ionic server 5001 5002 --lab
 
 ToDo
 -----
-1. Integrate with Rotten API
+1. Integrate with Rotten API - Done
 2. Add Login screen
 3. Add Auth0 integration, support Facebook and Google support
 4. Watch list
