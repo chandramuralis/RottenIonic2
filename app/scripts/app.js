@@ -4,8 +4,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
+// 'RottenIonic.services' is found in rottenServices.js
 angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.controllers', 'RottenIonic.services'])
 
 .run(function($ionicPlatform) {
@@ -31,7 +30,7 @@ angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.c
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -59,6 +58,15 @@ angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.c
     }
   })
 
+  .state('tab.boxOfficeMovieDetail', {
+    url: '/boxOfficeMovieDetail/:movieID',
+    views: {
+      'tab-boxoffice': {
+        templateUrl: 'templates/movies/movie-detail.html',
+        controller: 'MovieDetailCtrl'
+      }
+    }
+  })
 
   .state('tab.movies', {
     url: '/movies',
@@ -83,6 +91,6 @@ angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.c
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/movies');
+  $urlRouterProvider.otherwise('/tab/dash');
 
 });

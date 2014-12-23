@@ -4,10 +4,10 @@
     <div class="bar bar-header item-input-inset">
       <label class="item-input-wrapper">
         <i class="icon ion-ios7-search placeholder-icon"></i>
-        <input type="search" placeholder="Search" ng-model='searchQuery'>
+        <input type="search" placeholder="Search" ng-model='movie.searchQuery' ng-change="searchMovies()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }">
       </label>
-      <button class="button button-balanced" ng-click="searchMovies(searchQuery)">
-        Search
+      <button class="button button-clear" ng-click="clearSearch()">
+        Clear
       </button>
     </div>
 

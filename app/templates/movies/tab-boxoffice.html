@@ -3,7 +3,13 @@
   <ion-content>
     <div class="list">
 
-      <a ng-repeat="movie in boxOffice" href="#/tab/movies/{{movie.id}}" class="item item-avatar">
+      <!-- <a ng-repeat="movie in boxOffice" href="#/tab/boxOfficeMovieDetail/{{movie.id}}" class="item item-avatar">
+        <img ng-src="{{ movie.posters.thumbnail }}">
+        <h2>{{ movie.title }}</h2>
+        <h4>{{ movie.artist }}</h4>
+      </a> -->
+
+      <a ng-repeat="movie in boxOffice" ui-sref="tab.boxOfficeMovieDetail({movieID: movie.id})" class="item item-avatar">
         <img ng-src="{{ movie.posters.thumbnail }}">
         <h2>{{ movie.title }}</h2>
         <h4>{{ movie.artist }}</h4>

@@ -4,10 +4,16 @@ angular.module('RottenIonic.controllers')
   .controller('MoviesCtrl', ['$scope', '$q', 'RottenIonic.services',
     function($scope, $q, rottenService) {
 
-      $scope.searchQuery = 'ironman';
+      $scope.movies = {};
+      $scope.movie = {};
+      $scope.movie.searchQuery = 'ironman';
 
-      $scope.searchMovies = function(searchQuery) {
-        rottenService.searchMovies(searchQuery, 10, 'us')
+      $scope.searchMovies = function() {
+        if($scope.movie.searchQuery.length == 0) {
+          $scope.movies = '';
+          return;
+        }
+        rottenService.searchMovies($scope.movie.searchQuery, 10, 'us')
           .then(function(data) {
             if (data && data.movies) {
               $scope.movies = data.movies;
@@ -15,7 +21,12 @@ angular.module('RottenIonic.controllers')
           });
       };
 
-      $scope.searchMovies($scope.searchQuery);
+      $scope.clearSearch = function() {
+        $scope.movie.searchQuery = '';
+        $scope.movies = '';
+      };
+
+      $scope.searchMovies();
 
     }
   ]);

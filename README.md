@@ -33,3 +33,4 @@ ToDo
 4. Watch list
 5. Offline Support for Watch List
 6. Access Contacts and share the movie with a contact
+7. Integrate with Fandango API to get the nearby showtimes and theatres list
