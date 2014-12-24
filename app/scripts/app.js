@@ -7,7 +7,7 @@
 // 'RottenIonic.services' is found in rottenServices.js
 angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.controllers', 'RottenIonic.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,7 +17,14 @@ angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.c
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-    }
+    };
+
+    $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
+      console.log('<!!! ****** Transitioning to unfound State: ' + unfoundState.to + ' with Params: ' + JSON.stringify(unfoundState.toParams) +
+                ' with options: ' + unfoundState.options + '**** !!!>');
+      event.preventDefault();
+    });
+
   });
 })
 
@@ -68,6 +75,16 @@ angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.c
     }
   })
 
+  .state('tab.boxOfficeCastDetail', {
+    url: '/boxOfficeMovieDetail/cast/:castID',
+    views: {
+      'tab-boxoffice': {
+        templateUrl: 'templates/movies/cast-detail.html',
+        controller: 'CastDetailCtrl'
+      }
+    }
+  })
+
   .state('tab.movies', {
     url: '/movies',
     views: {
@@ -84,6 +101,16 @@ angular.module('RottenIonic', ['ionic', 'config', 'ionic.rating', 'RottenIonic.c
       'tab-movies': {
         templateUrl: 'templates/movies/movie-detail.html',
         controller: 'MovieDetailCtrl'
+      }
+    }
+  })
+
+  .state('tab.movieCastDetail', {
+    url: '/movies/cast/:castID',
+    views: {
+      'tab-boxoffice': {
+        templateUrl: 'templates/movies/cast-detail.html',
+        controller: 'CastDetailCtrl'
       }
     }
   });

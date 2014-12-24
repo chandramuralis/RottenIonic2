@@ -52,7 +52,7 @@
 
           <div class="list">
 
-            <a ng-repeat="cast in movie.abridged_cast" class="item">
+            <a ng-repeat="cast in movie.abridged_cast" class="item" ui-sref="tab.boxOfficeCastDetail({castID: cast.id })">
               <p>{{ cast.name }}</p>
             </a>
           </div>
@@ -73,5 +73,14 @@
 
         </div>
 
+  </ion-content>
+</ion-view>
+
+
+<ion-view="movieReview">
+  <ion-content>
+    <div>
+      {{movie.title}} review goes here
+    </div>
   </ion-content>
 </ion-view>
