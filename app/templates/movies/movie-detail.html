@@ -1,7 +1,7 @@
 <ion-view title="Movie Detail">
 
   <ion-content>
-    <div class="list card">
+    <div class="list ">
       <div class="item item-thumbnail-left">
         <img ng-src="{{movie.posters.thumbnail}}">
         <h2>{{movie.title}}</h2>
@@ -18,22 +18,25 @@
             <i class="ion-thumbsdown" ng-show="movie.ratings.audience_rating !='Upright'"> </i>
           </span>
         </p>
+        <progress max="100" value="{{movie.ratings.audience_score}}"> </progress>
       </div>
 
-      <div class="card">
+      <div class="">
         <div class="item item-divider">
           Add your rating
         </div>
-        <button class="button button-outline button-calm button-small">
+
+        <button class="button button-outline button-calm button-small ion-plus">
           Want to See
         </button>
-        <button class="button button-outline button-assertive button-small">
+        <button class="button button-outline button-assertive button-small ion-minus">
           Not Interested
         </button>
         <rating ng-model="rate" max="max"></rating>
+
       </div>
 
-      <div class="card">
+      <div class="">
         <div class="item item-divider">
           Synopsis
         </div>
@@ -45,18 +48,23 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="">
           <div class="item item-divider">
             Cast
           </div>
 
-          <div class="list">
-
-            <a ng-repeat="cast in movie.abridged_cast" class="item" ui-sref="tab.boxOfficeCastDetail({castID: cast.id })">
+          <div class="list" ng-if="isBoxOfficeTab()">
+            <a ng-repeat="cast in movie.abridged_cast" class="item" ui-sref="tab.boxOfficeCastDetail({movieID: movie.id })" >
               <p>{{ cast.name }}</p>
             </a>
           </div>
-        <div class="card">
+          <div class="list" ng-if="!isBoxOfficeTab()">
+            <a ng-repeat="cast in movie.abridged_cast" class="item" ui-sref="tab.movieCastDetail({movieID: movie.id })" >
+              <p>{{ cast.name }}</p>
+            </a>
+          </div>
+
+        <div class="">
 
 
           <div class="item tabs tabs-secondary tabs-icon-left">
@@ -72,15 +80,13 @@
           </div>
 
         </div>
+        <hr>
+        <div>
+          <ion-nav-view>
 
-  </ion-content>
-</ion-view>
+          </ion-nav-view>
+        </div>
 
 
-<ion-view="movieReview">
-  <ion-content>
-    <div>
-      {{movie.title}} review goes here
-    </div>
   </ion-content>
 </ion-view>

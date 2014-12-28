@@ -9,7 +9,7 @@ angular.module('RottenIonic.controllers')
       $scope.movie.searchQuery = 'ironman';
 
       $scope.searchMovies = function() {
-        if($scope.movie.searchQuery.length == 0) {
+        if($scope.movie.searchQuery.length === 0) {
           $scope.movies = '';
           return;
         }

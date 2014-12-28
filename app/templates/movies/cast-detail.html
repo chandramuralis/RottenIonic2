@@ -1,27 +1,15 @@
 <ion-view title="Movie Detail">
 
   <ion-content>
-    <div class="list card">
-
-      <div class="item item-thumbnail-left">
-        <img ng-src="{{movie.posters.thumbnail}}">
-        <h2>{{movie.title}}</h2>
-        <p>Released: {{movie.release_dates.theater | date: 'shortDate'}}</p>
-        <p class="movieDetail-score">
-          <span style="float:left">
-            Critics: {{movie.ratings.critics_score}}%
-            <i class="ion-thumbsup" ng-show="movie.ratings.critics_rating =='Certified Fresh'"> </i>
-            <i class="ion-thumbsdown" ng-show="movie.ratings.critics_rating !='Certified Fresh'"> </i>,
-          </span>
-          <span style="float:right">
-            Audience: {{movie.ratings.audience_score}}%
-            <i class="ion-thumbsup" ng-show="movie.ratings.audience_rating =='Upright'"> </i>
-            <i class="ion-thumbsdown" ng-show="movie.ratings.audience_rating !='Upright'"> </i>
-          </span>
-        </p>
+    <div class="list">
+      <div class="item item-divider">
+        {{movie.title}}
+      </div>
+      <div ng-repeat="cast in movie.abridged_cast" class="item">
+        <h2>{{ cast.name }}</h2>
+        <h4>as {{ cast.characters[0] || 'NA' }}</h4>
       </div>
 
-        </div>
-
-      </ion-content>
-    </ion-view>
+    </div>
+  </ion-content>
+</ion-view>
